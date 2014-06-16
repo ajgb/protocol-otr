@@ -20,7 +20,7 @@ SYNOPSIS
 
         # find or create contact known by $alice
         my $bob = $alice->contact('bob@domain');
-    
+
         # create secure channel to Bob
         my $channel = $bob->channel(
             {
@@ -47,7 +47,7 @@ SYNOPSIS
         # establish private chat
         $channel->init();
 
-        # send encrypted message
+        # encrypt message
         $channel->write("Hi Bob!");
 
         # finish all sessions
@@ -59,6 +59,20 @@ DESCRIPTION
     communicate in secure way.
 
 METHODS
+  new
+        my $otr = Protocol::OTR->new(
+            {
+                privkeys_file => "otr.private_key",
+                contacts_file => "otr.fingerprints",
+                instance_tags_file => "otr.instance_tags",
+            }
+        );
+
+    Returns an context object using optionally specified files. If files do
+    not exist, they will be created when needed.
+
+    The example above shows the default filenames used.
+
   find_account
         my $account = $otr->find_account( $name, $protocol );
 

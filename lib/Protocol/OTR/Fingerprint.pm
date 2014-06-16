@@ -84,7 +84,7 @@ Returns current status of fingerprint used in communication, which is one of:
 
 =item * Unused
 
-=item * Not private 
+=item * Not private
 
 =item * Unverified
 

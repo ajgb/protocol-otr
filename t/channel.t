@@ -182,7 +182,7 @@ my %common_handlers = (
     },
     on_smp_event => sub {
         my ($c, $smp_event_code, $progress) = @_;
- 
+
         my $slot = join('2', $c->account->name, $c->contact->name);
 
         $FLAGS{$slot}->{on_smp_event} = {
@@ -359,7 +359,7 @@ send_messages(
 
 is($FLAGS{alice2bob}->{on_smp}->{question}, $SMP_QUESTION, "Alice's channel received SMP question, and this time it is Alice");
 is($FLAGS{bob2alice}->{on_smp_event}->{code}, SMPEVENT_SUCCESS, "...so Bob's channel received SMPEVENT_SUCCESS ");
-is($FLAGS{alice2bob}->{on_smp_event}->{code}, SMPEVENT_SUCCESS, "...and so does Alice's channel"); 
+is($FLAGS{alice2bob}->{on_smp_event}->{code}, SMPEVENT_SUCCESS, "...and so does Alice's channel");
 
 %FLAGS = ();
 
@@ -376,8 +376,8 @@ is($FLAGS{bob2alice}->{on_gone_secure}, 1, "Bob's channel gone secure");
 my @alice_sessions = $channel_alice2bob->sessions();
 my @bob_sessions = $channel_bob2alice->sessions();
 
-ok((grep { $channel_alice2bob->current_session } @alice_sessions), "Alice's current session in the list of sessions"); 
-ok((grep { $channel_bob2alice->current_session } @bob_sessions), "Bob's current session in the list of sessions"); 
+ok((grep { $channel_alice2bob->current_session } @alice_sessions), "Alice's current session in the list of sessions");
+ok((grep { $channel_bob2alice->current_session } @bob_sessions), "Bob's current session in the list of sessions");
 
 ok (
     send_messages(

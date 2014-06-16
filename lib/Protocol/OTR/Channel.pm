@@ -261,7 +261,7 @@ Select the default OTR policy, see L<Protocol::OTR/:policies> for details.
     );
 
 Define the maximum message size handled by protocol. Messages larger then this
-value will be split and delivered separetely. 
+value will be split and delivered separetely.
 
 Following defaults are used based on the protocol:
 

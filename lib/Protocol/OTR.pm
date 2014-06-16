@@ -31,7 +31,7 @@ our %EXPORT_TAGS = (
         MSGEVENT_NONE
         MSGEVENT_ENCRYPTION_REQUIRED
         MSGEVENT_ENCRYPTION_ERROR
-        MSGEVENT_CONNECTION_ENDED 
+        MSGEVENT_CONNECTION_ENDED
         MSGEVENT_SETUP_ERROR
         MSGEVENT_MSG_REFLECTED
         MSGEVENT_MSG_RESENT
@@ -82,17 +82,17 @@ sub new {
             privkeys_file => {
                 type => SCALAR,
                 optional => 1,
-                default => 'otr.privkey', 
+                default => 'otr.privkey',
             },
             contacts_file => {
                 type => SCALAR,
                 optional => 1,
-                default => 'otr.fingerprints', 
+                default => 'otr.fingerprints',
             },
             instance_tags_file => {
                 type => SCALAR,
                 optional => 1,
-                default => 'otr.instance_tags', 
+                default => 'otr.instance_tags',
             },
         }
     );
@@ -106,7 +106,7 @@ sub new {
 
 sub account {
     my $self = shift;
-    
+
     my ($name, $protocol) = validate_pos(
         @_,
         {
@@ -136,7 +136,7 @@ sub accounts {
 
 sub find_account {
     my $self = shift;
-    
+
     my ($name, $protocol) = validate_pos(
         @_,
         {
@@ -179,7 +179,7 @@ __END__
 
     # find or create contact known by $alice
     my $bob = $alice->contact('bob@domain');
-    
+
     # create secure channel to Bob
     my $channel = $bob->channel(
         {
@@ -220,6 +220,21 @@ allowing to manage OTR setup and to communicate in secure way.
 
 =head1 METHODS
 
+=head2 new
+
+    my $otr = Protocol::OTR->new(
+        {
+            privkeys_file => "otr.private_key",
+            contacts_file => "otr.fingerprints",
+            instance_tags_file => "otr.instance_tags",
+        }
+    );
+
+Returns an context object using optionally specified files. If files do not exist, they
+will be created when needed.
+
+The example above shows the default filenames used.
+
 =head2 find_account
 
     my $account = $otr->find_account( $name, $protocol );
@@ -252,7 +267,7 @@ secure, but slow C</dev/random>.
 
 =head1 EXPORTED CONSTANTS
 
-Constants are grouped in four groups, to import them all use C<:constants>. 
+Constants are grouped in four groups, to import them all use C<:constants>.
 
 =head2 :policies
 

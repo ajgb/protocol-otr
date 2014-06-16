@@ -39,7 +39,7 @@ sub fingerprint {
 
 sub contact {
     my $self = shift;
- 
+
     my ($name, $fingerprint, $is_verified) = validate_pos(
         @_,
         {

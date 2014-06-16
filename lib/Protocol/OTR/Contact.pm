@@ -150,7 +150,7 @@ __END__
 
     # current active fingerprint
     my $active_fingerprint = $bob->active_fingerprint();
-    
+
     # create secure channel to Bob
     my $channel = $bob->channel(
         {

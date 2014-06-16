@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use ExtUtils::MakeMaker;                                                                                                                                                                                                                       
+use ExtUtils::MakeMaker;
 use Alien::OTR;
 
 my $libotr = Alien::OTR->new;
