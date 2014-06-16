@@ -1,6 +1,8 @@
 Revision history for Perl extension Protocol::OTR.
 
 {{$NEXT}}
+    Remove debug.
+    Add example XMPP client.
 
 0.01   2014-06-16 01:53:51
 	Initial version.
