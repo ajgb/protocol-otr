@@ -20,7 +20,7 @@ WriteMakefile(
     LIBS              => [$libs], # e.g., '-lm'
     INC               => "-I. $cflags", # e.g., '-I. -I/usr/include/other'
     CONFIGURE_REQUIRES => {
-      'Alien::OTR' => 0.001,
+      'Alien::OTR' => '4.0.0.1',
     },
     BUILD_REQUIRES    => {
       'ExtUtils::CBuilder' => 0,
