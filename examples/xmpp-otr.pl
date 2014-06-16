@@ -59,7 +59,7 @@ $cl->reg_cb(
                 {
                     on_read => sub {
                         my ($c, $message) = @_;
-        
+
                         my $msgout = "You said '" . $message . "' but... " . uc $message;
 
                         warn "Response set to: $msgout\n";
