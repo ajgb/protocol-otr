@@ -172,6 +172,18 @@ Verify identity of the contact using Socialist Millionaires' Protocol (SMP).
 Contact is required to respond with the expected C<$answer>, optional
 C<$question> may be provided.
 
+=head2 smp_respond
+
+    sub display_smp_popup {
+        my ($channel, $question) = @_;
+
+        my $answer = get_answer($question);
+
+        $channel->smp_respond( $answer );
+    }
+
+Respond to SMP identity verification question with expected secret/answer.
+
 =head2 smp_abort
 
     $channel->smp_abort();
@@ -500,14 +512,13 @@ C<$interval> is described above.
                 print "SMP verification in channel between ", $c->contact->name,
                       " and ", $c->account->name, "\n";
 
-                return handle_smp( $question );
+                display_smp_popup( $c, $question );
             },
             ...
         }
     );
 
-Called when received SMP verification. Return the expected answer to confirm
-your identity.
+Called when received SMP verification. Use to retrieve the answer.
 
 C<$c> is a reference to the current channel.
 
