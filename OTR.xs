@@ -2058,3 +2058,39 @@ select_session(channel, session)
         XSRETURN_NO;
     }
 
+void
+status(channel)
+    SV * channel
+    PROTOTYPE: $ 
+    PREINIT:
+        ConnContext *context;
+        Fingerprint *fingerprint;
+        OTRctx *ctx;
+        char *contact_name;
+        char *account_name;
+        char *account_protocol;
+    PPCODE:
+    {
+        HV * contact = (HV*)CHANNEL2CONTACT(channel);
+        HV * account = (HV*)CONTACT2ACCOUNT(contact);
+        ctx = ACCOUNT2CTX(account);
+
+        contact_name = SvPV_nolen(HASHGET(contact, "name", 4));
+        account_name = SvPV_nolen(HASHGET(account, "name", 4));
+        account_protocol = SvPV_nolen(HASHGET(account, "protocol", 8));
+
+        context = otrl_context_find(
+            ctx->userstate, contact_name, account_name, account_protocol,
+            SvUV(HASHGET(channel, "selected_instag", 15)), 0, NULL, NULL, NULL );
+
+        if (context) {
+            TrustLevel this_level = otrp_plugin_context_to_trust(context);
+
+            XPUSHs( newSVpv( TrustStates[this_level], 0 ) );
+
+            XSRETURN(1);
+        }
+        XSRETURN_UNDEF;
+    }
+
+

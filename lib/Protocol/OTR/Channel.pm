@@ -124,6 +124,26 @@ Refreshes current authentication keys.
 
 Finish all sessions within the channel.
 
+=head2 status
+
+    print $channel->status();
+
+Returns current status of the channel, which is one of:
+
+=over 4
+
+=item * Unused
+
+=item * Not private
+
+=item * Unverified
+
+=item * Private
+
+=item * Finished
+
+=back
+
 =head2 create_symkey
 
     my $symkey = $channel->create_symkey( $use, $use_for );

@@ -240,6 +240,9 @@ $RWHANDLERS{bob2alice}->{on_write} = sub {
     };
 };
 
+is($channel_alice2bob->status, "Not private", "Status of Alice's channel to Bob is Not private");
+is($channel_bob2alice->status, "Not private", "Status of Bob's channel to Alice is Not private");
+
 send_messages(
     sub {
         $channel_alice2bob->init();
@@ -248,6 +251,11 @@ send_messages(
 
 is($FLAGS{alice2bob}->{on_gone_secure}, 1, "Alice's channel is secure");
 is($FLAGS{bob2alice}->{on_gone_secure}, 1, "Bob's channel is secure");
+
+is($channel_alice2bob->status, "Unverified", "Status of Alice's channel to Bob is Unverified");
+is($channel_alice2bob->contact->active_fingerprint->status, "Unverified", "...and so is active fingerprint");
+is($channel_bob2alice->status, "Unverified", "Status of Bob's channel to Alice is Unverified");
+is($channel_bob2alice->contact->active_fingerprint->status, "Unverified", "...and so is active fingerprint");
 
 is($FLAGS{alice2bob}->{on_unverified_fingerprint}->{hash}, $bob->fingerprint, "Alice's learnt Bob's fingerprint");
 is($FLAGS{alice2bob}->{on_unverified_fingerprint}->{seen_before}, 1, "...that was seen before");
@@ -294,6 +302,9 @@ send_messages(
 is($FLAGS{alice2bob}->{on_gone_insecure}, 1, "Alice's channel gone insecure");
 is($FLAGS{alice2bob}->{on_event}->{code}, MSGEVENT_LOG_HEARTBEAT_RCVD, "Alice's channel received MSGEVENT_LOG_HEARTBEAT_RCVD ");
 is($FLAGS{bob2alice}->{on_is_contact_logged_in}, 1, "Bob's checked if Alice is online");
+
+is($channel_alice2bob->status, "Finished", "Status of Alice's channel to Bob is Finished");
+is($channel_bob2alice->status, "Not private", "Status of Bob's channel to Alice is Not private");
 
 %FLAGS = ();
 
@@ -365,6 +376,12 @@ send_messages(
 );
 is($FLAGS{bob2alice}->{on_smp_event}->{code}, SMPEVENT_SUCCESS, "...so Bob's channel received SMPEVENT_SUCCESS ");
 is($FLAGS{alice2bob}->{on_smp_event}->{code}, SMPEVENT_SUCCESS, "...and so did Alice's channel");
+
+is($channel_alice2bob->status, "Private", "Status of Alice's channel to Bob is Private");
+is($channel_alice2bob->contact->active_fingerprint->status, "Private", "...and so is active fingerprint");
+is($channel_bob2alice->status, "Private", "Status of Bob's channel to Alice is Private");
+is($channel_bob2alice->contact->active_fingerprint->status, "Private", "...and so is active fingerprint");
+
 
 %FLAGS = ();
 
