@@ -1,4 +1,4 @@
-# ABSTRACT: Off-the-Record secure messaging protocol
+# ABSTRACT: Off-the-Record communication Channel
 package Protocol::OTR::Channel;
 
 use strict;
@@ -84,7 +84,7 @@ __END__
 
 =head1 DESCRIPTION
 
-L<Protocol::OTR::Contact> represents the OTR contact.
+L<Protocol::OTR::Contact> represents the OTR communication channel.
 
 =head1 METHODS
 

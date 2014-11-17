@@ -1,4 +1,4 @@
-# ABSTRACT: Off-the-Record secure messaging protocol
+# ABSTRACT: Off-the-Record Contact
 package Protocol::OTR::Contact;
 
 use strict;

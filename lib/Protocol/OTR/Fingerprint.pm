@@ -1,4 +1,4 @@
-# ABSTRACT: Off-the-Record secure messaging protocol
+# ABSTRACT: Off-the-Record contact's Fingerprint
 package Protocol::OTR::Fingerprint;
 
 use strict;

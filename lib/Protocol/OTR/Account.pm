@@ -1,4 +1,4 @@
-# ABSTRACT: Off-the-Record secure messaging protocol
+# ABSTRACT: Off-the-Record Account (private key)
 package Protocol::OTR::Account;
 
 use strict;
