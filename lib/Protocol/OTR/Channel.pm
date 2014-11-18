@@ -84,7 +84,7 @@ __END__
 
 =head1 DESCRIPTION
 
-L<Protocol::OTR::Contact> represents the OTR communication channel.
+L<Protocol::OTR::Channel> represents the OTR communication channel.
 
 =head1 METHODS
 
