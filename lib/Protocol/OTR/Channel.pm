@@ -328,12 +328,11 @@ Following defaults are used based on the protocol:
         }
     );
 
-Send given message to contact - it will be encrypted and split if neccessary.
-This callback is required.
+Receives encrypted message to be sent. This callback is required.
 
 C<$c> is a reference to the current channel.
 
-C<$message> is the message to be sent.
+C<$message> is the encrypted message to be sent.
 
 =head2 on_read
 
