@@ -5,6 +5,8 @@ use strict;
 use warnings;
 
 use Alien::OTR;
+use Alien::GCrypt;
+use Alien::GPG::Error;
 use Carp qw( croak );
 use Protocol::OTR::Account ();
 use Params::Validate qw(validate validate_pos SCALAR);
